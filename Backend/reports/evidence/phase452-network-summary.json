@@ -1,0 +1,102 @@
+{
+  "audit_date": "2026-11-15",
+  "browser_origin": "http://127.0.0.1:8443",
+  "backend_origin": "http://127.0.0.1:8000",
+  "browser_console_errors_captured": 0,
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "response_summary": {
+        "status": "online",
+        "version": "1.0.0"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/docs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/openapi.json",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "origin": "http://127.0.0.1:8443",
+      "status": 200,
+      "content_type": "text/html"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/data/fits?module=spectral_analysis",
+      "status": 200,
+      "product_count": 10
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/data/fits/{file_id}/calibration",
+      "status": 200,
+      "mef_products_checked": 9
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/data/fits/{file_id}/preview?plane=0",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/data/fits?module=spectral_analysis",
+      "status": 200,
+      "request_origin": "http://127.0.0.1:8443",
+      "access_control_allow_origin": "http://127.0.0.1:8443",
+      "access_control_allow_methods": "GET, POST, OPTIONS"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/data/fits/fa0be417-a929-52b0-bd99-8e02be2ef385/spectral-runs",
+      "status": 201,
+      "run_id": "093bb14d-f66a-4921-81c9-5b723fda07a8",
+      "validation_status": "PASS_WITH_LIMITATIONS",
+      "result_sha256": "3036e2ce42eb8ca234e6e27fac6f9d5ee07bae5774019aaeb52d2937a226fd14"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/data/fits/075c2cab-8372-599a-823c-9df2fd606530/spectral-runs",
+      "status": 201,
+      "run_id": "f8fc0494-385b-4dee-8c8e-9e4cc1d22b9d",
+      "validation_status": "PASS_WITH_LIMITATIONS",
+      "result_sha256": "e4f8bacb8d9a7c09c7f36352b8be45ce7b30955faaccd51eb6916d013309b827"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/data/fits/fa0be417-a929-52b0-bd99-8e02be2ef385/spectral-runs",
+      "status": 201,
+      "run_id": "4a5d383f-8e4d-483a-98f0-1a9f94f80df7",
+      "validation_status": "BLOCKED",
+      "result_sha256": "6ae3dfce1e1d9f107d4eb098417708b658c7db01d3d5211863b2564f9678aa33"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/data/fits/60a077eb-47e2-504c-9f69-1573d0ef83f9/spectral-runs",
+      "status": 201,
+      "run_id": "21327477-86f1-486b-adfa-02076059eb9e",
+      "validation_status": "PASS_WITH_LIMITATIONS",
+      "result_sha256": "2a8c4e8c953f2717bbf51f035e68420c7bff3ee2e9a08fc9fbc314d926d54a6a"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/data/scientific-runs/{run_id}",
+      "status": 200,
+      "run_ids": [
+        "093bb14d-f66a-4921-81c9-5b723fda07a8",
+        "f8fc0494-385b-4dee-8c8e-9e4cc1d22b9d",
+        "4a5d383f-8e4d-483a-98f0-1a9f94f80df7",
+        "21327477-86f1-486b-adfa-02076059eb9e"
+      ]
+    }
+  ]
+}

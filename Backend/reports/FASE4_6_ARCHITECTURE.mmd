@@ -1,0 +1,70 @@
+flowchart LR
+  subgraph UI["Cosmic Observatory · Frontend React/Vite"]
+    APP["App.tsx · modo Observatorio"]
+    CLIENT["API client · contratos, timeout, cancelación"]
+    DEMO["Modo demo separado · datos ilustrativos"]
+    APP --> CLIENT
+    APP -. "DEMO_ONLY / rotulado" .-> DEMO
+  end
+
+  subgraph API["FastAPI · /api/v1"]
+    SKY["sky / IRSA observations"]
+    DATA["data / FITS, preview, calibration"]
+    SPEC["spectral profile remoto"]
+    TEMP["temporal compare + async jobs"]
+    DET["discovery candidates"]
+  end
+
+  subgraph CORE["Servicios científicos locales"]
+    INV["FitsInventory + SHA-256"]
+    CAL["CalibrationManager · D1/D2 CWAVE/CBAND"]
+    PROC["FITSProcessor · MEF/cubo, FLAGS, VARIANCE, WCS"]
+    DETECTOR["TemporalEngine DAOStarFinder · experimental"]
+    RENDER["ImageRenderer · PNG derivado"]
+    RESULTS["ScientificRun · persistencia/replay"]
+    CAND["DetectionCandidateModel · temporal only"]
+  end
+
+  subgraph STORE["Datos e infraestructura"]
+    RAW["app/data/raw/spherex · FITS inmutables"]
+    MAN["fits-manifest.json · inventario/hash"]
+    AUX["app/data/calibration/spherex · Spectral WCS D1/D2"]
+    DB["SQLite validado local / PostgreSQL no validado"]
+    CACHE["Redis no disponible / memoria volátil"]
+  end
+
+  IRSA["NASA/IPAC IRSA · red externa"]
+
+  CLIENT --> DATA
+  CLIENT --> SKY
+  CLIENT -. "si observaciones disponibles" .-> TEMP
+  CLIENT --> SPEC
+  CLIENT -. "candidatos tras pipeline temporal" .-> DET
+  DATA --> INV
+  DATA --> CAL
+  DATA --> PROC
+  DATA --> DETECTOR
+  DATA --> RESULTS
+  DATA --> RENDER
+  INV --> RAW
+  INV --> MAN
+  CAL --> AUX
+  PROC --> RAW
+  PROC --> CAL
+  DETECTOR --> PROC
+  RESULTS --> DB
+  DET --> CAND
+  TEMP --> CAND
+  SKY -. "502/timeout observado" .-> IRSA
+  SPEC -. "consulta remota no validada" .-> IRSA
+  TEMP -. "BLOCKED: IRSA/par compatible no disponible" .-> IRSA
+  TEMP --> PROC
+  SKY --> CACHE
+  CAND -. "sin enlace a detecciones locales" .-> RESULTS
+
+  classDef blocked fill:#fff1f0,stroke:#cf1322,color:#820014;
+  classDef limited fill:#fffbe6,stroke:#d48806,color:#614700;
+  classDef demo fill:#f9f0ff,stroke:#722ed1,color:#391085;
+  class IRSA,TEMP,CAND blocked;
+  class INV,DATA,CAL,PROC,DETECTOR,RESULTS,DB,CACHE limited;
+  class DEMO demo;

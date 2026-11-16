@@ -1,0 +1,1503 @@
+{
+  "catalog_probe": {
+    "catalogs": {
+      "2MASS_PSC": {
+        "catalog_table": "fp_psc",
+        "columns": [
+          "ra",
+          "dec",
+          "clon",
+          "clat",
+          "err_maj",
+          "err_min",
+          "err_ang",
+          "designation",
+          "j_m",
+          "j_cmsig",
+          "j_msigcom",
+          "j_snr",
+          "h_m",
+          "h_cmsig",
+          "h_msigcom",
+          "h_snr",
+          "k_m",
+          "k_cmsig",
+          "k_msigcom",
+          "k_snr",
+          "ph_qual",
+          "rd_flg",
+          "bl_flg",
+          "cc_flg",
+          "ndet",
+          "gal_contam",
+          "mp_flg",
+          "hemis",
+          "xdate",
+          "scan",
+          "glon",
+          "glat",
+          "a",
+          "dist_opt",
+          "phi_opt",
+          "b_m_opt",
+          "vr_m_opt",
+          "nopt_mchs",
+          "ext_key",
+          "dist",
+          "angle",
+          "j_h",
+          "h_k",
+          "j_k"
+        ],
+        "position_epoch_fields_available": false,
+        "proper_motion_fields_available": false,
+        "radius_deg": 0.25,
+        "row_limit": 2000,
+        "row_limit_reached": true,
+        "rows_returned": 2000
+      },
+      "CatWISE2020": {
+        "catalog_table": "catwise_2020",
+        "columns": [
+          "source_name",
+          "source_id",
+          "ra",
+          "dec",
+          "clon",
+          "clat",
+          "sigra",
+          "sigdec",
+          "w1snr",
+          "w2snr",
+          "w1mpro",
+          "w1sigmpro",
+          "w2mpro",
+          "w2sigmpro",
+          "rchi2",
+          "nb",
+          "w1nm",
+          "w1m",
+          "w2nm",
+          "w2m",
+          "meanobsmjd",
+          "pmra",
+          "pmdec",
+          "sigpmra",
+          "sigpmdec",
+          "rchi2_pm",
+          "cc_flags",
+          "ab_flags",
+          "dist",
+          "angle"
+        ],
+        "position_epoch_fields_available": true,
+        "proper_motion_fields_available": true,
+        "radius_deg": 0.1,
+        "row_limit": 2000,
+        "row_limit_reached": true,
+        "rows_returned": 2000
+      }
+    },
+    "is_astrometric_validation": false,
+    "metadata": {
+      "cc_flags": {
+        "description": "worst case 4 character cc_flag from AllWISE",
+        "unit": ""
+      },
+      "dec": {
+        "description": "declination (J2000)",
+        "unit": "deg"
+      },
+      "meanobsmjd": {
+        "description": "mean observation epoch",
+        "unit": "d"
+      },
+      "pmdec": {
+        "description": "Apparent motion in Dec",
+        "unit": "arcsec/yr"
+      },
+      "pmra": {
+        "description": "Apparent motion in RA",
+        "unit": "arcsec/yr"
+      },
+      "ra": {
+        "description": "right ascension (J2000)",
+        "unit": "deg"
+      },
+      "rchi2_pm": {
+        "description": "Combined Reduced chi^2 in all bands for the psf photometry includes src motion",
+        "unit": ""
+      },
+      "sigdec": {
+        "description": "uncertainty in DEC",
+        "unit": "arcsec"
+      },
+      "sigpmdec": {
+        "description": "Uncertainty in the Dec motion estimate",
+        "unit": "arcsec/yr"
+      },
+      "sigpmra": {
+        "description": "Uncertainty in the RA motion estimate",
+        "unit": "arcsec/yr"
+      },
+      "sigra": {
+        "description": "uncertainty in RA",
+        "unit": "arcsec"
+      },
+      "w1snr": {
+        "description": "instrumental profile-fit photometry S/N ratio, band 1",
+        "unit": ""
+      },
+      "w2snr": {
+        "description": "instrumental profile-fit photometry S/N ratio, band 2",
+        "unit": ""
+      }
+    },
+    "observation_mjd": 60863.005131377,
+    "pilot_crossmatch": {
+      "accepted_astrometric_associations": 0,
+      "candidate_pairs_within_8_pixels": 21,
+      "catalog_rows_received": 2000,
+      "detections_from_unvalidated_global_threshold": 28727,
+      "excluded_from_residual_metrics": 21,
+      "exclusion_reason": "Pilot covers only a 0.1-degree-radius central cone; the selected single-image detector has no demonstrated false-positive rate, centroid uncertainty, or injection/recovery calibration. These mutual-nearest pairs are candidate associations only.",
+      "is_astrometric_validation": false,
+      "proper_motion_propagation": "CatWISE meanobsmjd to SPHEREx MJD-OBS using the catalogue pmra/pmdec fields; table schema reports arcsec/yr. No radial velocity or distance was applied.",
+      "quality_filter": {
+        "cc_flags": "0000",
+        "position_uncertainty_arcsec_lt": 1,
+        "proper_motion_uncertainty_arcsec_per_year_lt": 0.1,
+        "rchi2_pm_lt": 5,
+        "w1snr_gt": 10,
+        "w2snr_gt": 5
+      },
+      "quality_reference_rows": 78,
+      "quality_references_projected_inside_image": 78,
+      "spatial_coverage": "central cone only; edges and corners not sampled"
+    },
+    "query_time_utc": "2026-11-16T01:19:01.203662+00:00",
+    "status": "catalogs_queried",
+    "target_center_icrs_deg": [
+      148.167829013,
+      -60.282634698
+    ],
+    "target_product": "level2_2025W28_1B_0001_1D1_spx_l2b-v27-2026-215.fits"
+  },
+  "created_at_utc": "2026-11-16T01:19:00.803177+00:00",
+  "cubes_found": 1,
+  "hash_mismatches": [],
+  "manifest_entries": 10,
+  "manifest_path": "Backend\\app\\data\\processed\\spherex\\fits-manifest.json",
+  "manifest_sha256": "899881dfbca6ba5f035f30e346af93f4af457c8ec22d3db667ce6c860e64874c",
+  "mefs_found": 9,
+  "products": [
+    {
+      "alternate_wcs_w": {
+        "ctype": [
+          "WAVE-TAB",
+          "WAVE-TAB"
+        ],
+        "ctype_declares_sip": false,
+        "interpretation": "Astropy attaches the primary SIP coefficients to this alternate WAVE-TAB WCS despite its CTYPE lacking -SIP.",
+        "sip_coefficients_attached": true
+      },
+      "date_obs": "2025-07-07T00:07:23.351",
+      "detector": 1,
+      "filename": "level2_2025W28_1B_0001_1D1_spx_l2b-v27-2026-215.fits",
+      "finast": 0,
+      "image_hdu_index": 1,
+      "image_hdu_name": "IMAGE",
+      "manifest_sha256": "ed8debec7bf19f4d9c92375f139176b5c9c7ced628a59a598179d7869441c296",
+      "mjd_obs": 60863.005131377,
+      "naxis": 2,
+      "naxis1": 2040,
+      "naxis2": 2040,
+      "naxis3": null,
+      "observation_id": "2025W28_1B_0001_1",
+      "processing_date": null,
+      "processing_version": null,
+      "relative_path": "AstroVision AI/level2_2025W28_1B_0001_1D1_spx_l2b-v27-2026-215.fits",
+      "release_keywords": {},
+      "round_trip": {
+        "max_error_pixels": 4.435198876738399e-08,
+        "p95_error_pixels": 6.324481005306951e-09,
+        "sample_points": 25
+      },
+      "sha256": "ed8debec7bf19f4d9c92375f139176b5c9c7ced628a59a598179d7869441c296",
+      "sha256_matches_manifest": true,
+      "shape_numpy_order": [
+        2040,
+        2040
+      ],
+      "sip": {
+        "active_in_primary_celestial_wcs": true,
+        "families": {
+          "A": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "AP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "B": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "BP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          }
+        }
+      },
+      "sip_vs_no_sip_diagnostic_arcsec": {
+        "is_accuracy_validation": false,
+        "maximum": 80.71020229787408,
+        "median": 18.49330969167598,
+        "p95": 56.28102589384664
+      },
+      "wcs": {
+        "axis_correlation_matrix": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ],
+        "cd": null,
+        "cdelt": [
+          1.0,
+          1.0
+        ],
+        "crpix": [
+          1020.5,
+          1020.5
+        ],
+        "crval": [
+          148.167829013,
+          -60.282634698
+        ],
+        "ctype": [
+          "RA---TAN-SIP",
+          "DEC--TAN-SIP"
+        ],
+        "cunit": [
+          "deg",
+          "deg"
+        ],
+        "equinox": null,
+        "latpole": -60.282634698,
+        "lonpole": 180.0,
+        "pc": [
+          [
+            0.000898634202933,
+            -0.00148727083429
+          ],
+          [
+            -0.00145534798045,
+            -0.000841311191983
+          ]
+        ],
+        "radesys": "ICRS",
+        "wcsaxes": 2
+      }
+    },
+    {
+      "alternate_wcs_w": {
+        "ctype": [
+          "WAVE-TAB",
+          "WAVE-TAB"
+        ],
+        "ctype_declares_sip": false,
+        "interpretation": "Astropy attaches the primary SIP coefficients to this alternate WAVE-TAB WCS despite its CTYPE lacking -SIP.",
+        "sip_coefficients_attached": true
+      },
+      "date_obs": "2025-07-07T00:10:13.724",
+      "detector": 1,
+      "filename": "level2_2025W28_1B_0002_1D1_spx_l2b-v27-2026-215.fits",
+      "finast": 0,
+      "image_hdu_index": 1,
+      "image_hdu_name": "IMAGE",
+      "manifest_sha256": "9bbf5ff345c36c0f95689a856f788562e48bc56fe792a558c1cbc4a16b195bde",
+      "mjd_obs": 60863.007103287,
+      "naxis": 2,
+      "naxis1": 2040,
+      "naxis2": 2040,
+      "naxis3": null,
+      "observation_id": "2025W28_1B_0002_1",
+      "processing_date": null,
+      "processing_version": null,
+      "relative_path": "AstroVision AI/level2_2025W28_1B_0002_1D1_spx_l2b-v27-2026-215.fits",
+      "release_keywords": {},
+      "round_trip": {
+        "max_error_pixels": 5.3271828796132124e-08,
+        "p95_error_pixels": 7.786280843022782e-09,
+        "sample_points": 25
+      },
+      "sha256": "9bbf5ff345c36c0f95689a856f788562e48bc56fe792a558c1cbc4a16b195bde",
+      "sha256_matches_manifest": true,
+      "shape_numpy_order": [
+        2040,
+        2040
+      ],
+      "sip": {
+        "active_in_primary_celestial_wcs": true,
+        "families": {
+          "A": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "AP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "B": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "BP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          }
+        }
+      },
+      "sip_vs_no_sip_diagnostic_arcsec": {
+        "is_accuracy_validation": false,
+        "maximum": 85.24463680250105,
+        "median": 18.43811940658222,
+        "p95": 55.74058928251966
+      },
+      "wcs": {
+        "axis_correlation_matrix": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ],
+        "cd": null,
+        "cdelt": [
+          1.0,
+          1.0
+        ],
+        "crpix": [
+          1020.5,
+          1020.5
+        ],
+        "crval": [
+          128.249485286,
+          -64.078685463
+        ],
+        "ctype": [
+          "RA---TAN-SIP",
+          "DEC--TAN-SIP"
+        ],
+        "cunit": [
+          "deg",
+          "deg"
+        ],
+        "equinox": null,
+        "latpole": -64.078685463,
+        "lonpole": 180.0,
+        "pc": [
+          [
+            0.000390387122465,
+            -0.00167698062318
+          ],
+          [
+            -0.00166560345727,
+            -0.00032697187324
+          ]
+        ],
+        "radesys": "ICRS",
+        "wcsaxes": 2
+      }
+    },
+    {
+      "alternate_wcs_w": {
+        "ctype": [
+          "WAVE-TAB",
+          "WAVE-TAB"
+        ],
+        "ctype_declares_sip": false,
+        "interpretation": "Astropy attaches the primary SIP coefficients to this alternate WAVE-TAB WCS despite its CTYPE lacking -SIP.",
+        "sip_coefficients_attached": true
+      },
+      "date_obs": "2025-07-07T00:13:13.307",
+      "detector": 1,
+      "filename": "level2_2025W28_1B_0003_1D1_spx_l2b-v27-2026-215.fits",
+      "finast": 0,
+      "image_hdu_index": 1,
+      "image_hdu_name": "IMAGE",
+      "manifest_sha256": "1e7318b504635f0de620de975e5109a5b83aca560fd07096a4ec881d32a733a2",
+      "mjd_obs": 60863.009181794,
+      "naxis": 2,
+      "naxis1": 2040,
+      "naxis2": 2040,
+      "naxis3": null,
+      "observation_id": "2025W28_1B_0003_1",
+      "processing_date": null,
+      "processing_version": null,
+      "relative_path": "AstroVision AI/level2_2025W28_1B_0003_1D1_spx_l2b-v27-2026-215.fits",
+      "release_keywords": {},
+      "round_trip": {
+        "max_error_pixels": 4.38838392499719e-08,
+        "p95_error_pixels": 6.140817708566044e-09,
+        "sample_points": 25
+      },
+      "sha256": "1e7318b504635f0de620de975e5109a5b83aca560fd07096a4ec881d32a733a2",
+      "sha256_matches_manifest": true,
+      "shape_numpy_order": [
+        2040,
+        2040
+      ],
+      "sip": {
+        "active_in_primary_celestial_wcs": true,
+        "families": {
+          "A": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "AP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "B": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "BP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          }
+        }
+      },
+      "sip_vs_no_sip_diagnostic_arcsec": {
+        "is_accuracy_validation": false,
+        "maximum": 79.40547350512591,
+        "median": 17.372851437768162,
+        "p95": 56.593451063332274
+      },
+      "wcs": {
+        "axis_correlation_matrix": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ],
+        "cd": null,
+        "cdelt": [
+          1.0,
+          1.0
+        ],
+        "crpix": [
+          1020.5,
+          1020.5
+        ],
+        "crval": [
+          159.26575034,
+          -57.4320456212
+        ],
+        "ctype": [
+          "RA---TAN-SIP",
+          "DEC--TAN-SIP"
+        ],
+        "cunit": [
+          "deg",
+          "deg"
+        ],
+        "equinox": null,
+        "latpole": -57.4320456212,
+        "lonpole": 180.0,
+        "pc": [
+          [
+            0.00109633368451,
+            -0.00135286449724
+          ],
+          [
+            -0.00131317477681,
+            -0.00104389597314
+          ]
+        ],
+        "radesys": "ICRS",
+        "wcsaxes": 2
+      }
+    },
+    {
+      "alternate_wcs_w": {
+        "ctype": [
+          "WAVE-TAB",
+          "WAVE-TAB"
+        ],
+        "ctype_declares_sip": false,
+        "interpretation": "Astropy attaches the primary SIP coefficients to this alternate WAVE-TAB WCS despite its CTYPE lacking -SIP.",
+        "sip_coefficients_attached": true
+      },
+      "date_obs": "2025-06-18T02:23:01.543",
+      "detector": 1,
+      "filename": "level2_2025W25_1B_0429_1D1_spx_l2b-v27-2026-213.fits",
+      "finast": 0,
+      "image_hdu_index": 1,
+      "image_hdu_name": "IMAGE",
+      "manifest_sha256": "921b24805a3213467ef6a8502bb4af4231be78f4bd1b99802b52609c7d83d28c",
+      "mjd_obs": 60844.099323414,
+      "naxis": 2,
+      "naxis1": 2040,
+      "naxis2": 2040,
+      "naxis3": null,
+      "observation_id": "2025W25_1B_0429_1",
+      "processing_date": null,
+      "processing_version": null,
+      "relative_path": "Discovery Intelligence/level2_2025W25_1B_0429_1D1_spx_l2b-v27-2026-213.fits",
+      "release_keywords": {},
+      "round_trip": {
+        "max_error_pixels": 4.6801893087640706e-08,
+        "p95_error_pixels": 5.822017009861786e-09,
+        "sample_points": 25
+      },
+      "sha256": "921b24805a3213467ef6a8502bb4af4231be78f4bd1b99802b52609c7d83d28c",
+      "sha256_matches_manifest": true,
+      "shape_numpy_order": [
+        2040,
+        2040
+      ],
+      "sip": {
+        "active_in_primary_celestial_wcs": true,
+        "families": {
+          "A": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "AP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "B": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "BP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          }
+        }
+      },
+      "sip_vs_no_sip_diagnostic_arcsec": {
+        "is_accuracy_validation": false,
+        "maximum": 78.54405367881728,
+        "median": 15.61425493088677,
+        "p95": 55.567979946093494
+      },
+      "wcs": {
+        "axis_correlation_matrix": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ],
+        "cd": null,
+        "cdelt": [
+          1.0,
+          1.0
+        ],
+        "crpix": [
+          1020.5,
+          1020.5
+        ],
+        "crval": [
+          212.803394936,
+          29.8046228938
+        ],
+        "ctype": [
+          "RA---TAN-SIP",
+          "DEC--TAN-SIP"
+        ],
+        "cunit": [
+          "deg",
+          "deg"
+        ],
+        "equinox": null,
+        "latpole": 29.8046228938,
+        "lonpole": 180.0,
+        "pc": [
+          [
+            0.00158750981915,
+            -0.000697881076226
+          ],
+          [
+            -0.000638114762229,
+            -0.0015605025381
+          ]
+        ],
+        "radesys": "ICRS",
+        "wcsaxes": 2
+      }
+    },
+    {
+      "alternate_wcs_w": null,
+      "date_obs": null,
+      "detector": null,
+      "filename": "Npix0_cube.fits",
+      "finast": null,
+      "image_hdu_index": 1,
+      "image_hdu_name": "IMAGE",
+      "manifest_sha256": "a595a4511dc0b63e0a4c1fb3d0a7735317f17ebf1d11d774888b2566bdb870bc",
+      "mjd_obs": null,
+      "naxis": 3,
+      "naxis1": 512,
+      "naxis2": 512,
+      "naxis3": 102,
+      "observation_id": null,
+      "processing_date": null,
+      "processing_version": null,
+      "relative_path": "Spectral Intelligence/Npix0_cube.fits",
+      "release_keywords": {},
+      "round_trip": {
+        "max_error_pixels": 0.0,
+        "p95_error_pixels": 0.0,
+        "sample_points": 3
+      },
+      "sha256": "a595a4511dc0b63e0a4c1fb3d0a7735317f17ebf1d11d774888b2566bdb870bc",
+      "sha256_matches_manifest": true,
+      "shape_numpy_order": [
+        102,
+        512,
+        512
+      ],
+      "sip": {
+        "active_in_primary_celestial_wcs": false,
+        "families": {
+          "A": {
+            "coefficient_count": 0,
+            "finite_coefficient_count": 0,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": null,
+            "terms_above_declared_order": []
+          },
+          "AP": {
+            "coefficient_count": 0,
+            "finite_coefficient_count": 0,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": null,
+            "terms_above_declared_order": []
+          },
+          "B": {
+            "coefficient_count": 0,
+            "finite_coefficient_count": 0,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": null,
+            "terms_above_declared_order": []
+          },
+          "BP": {
+            "coefficient_count": 0,
+            "finite_coefficient_count": 0,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": null,
+            "terms_above_declared_order": []
+          }
+        }
+      },
+      "sip_vs_no_sip_diagnostic_arcsec": {
+        "is_accuracy_validation": false,
+        "maximum": 0.0,
+        "median": 0.0,
+        "p95": 0.0
+      },
+      "wcs": {
+        "axis_correlation_matrix": [
+          [
+            true,
+            true,
+            false
+          ],
+          [
+            true,
+            true,
+            false
+          ],
+          [
+            false,
+            false,
+            true
+          ]
+        ],
+        "cd": null,
+        "cdelt": [
+          1.0,
+          1.0
+        ],
+        "crpix": [
+          8192.5,
+          8704.5
+        ],
+        "crval": [
+          0.0,
+          0.0
+        ],
+        "ctype": [
+          "RA---HPX",
+          "DEC--HPX"
+        ],
+        "cunit": [
+          "deg",
+          "deg"
+        ],
+        "equinox": null,
+        "latpole": 90.0,
+        "lonpole": 0.0,
+        "pc": [
+          [
+            -0.00274658203125,
+            -0.00274658203125
+          ],
+          [
+            0.00274658203125,
+            -0.00274658203125
+          ]
+        ],
+        "radesys": "ICRS",
+        "wcsaxes": 3
+      }
+    },
+    {
+      "alternate_wcs_w": {
+        "ctype": [
+          "WAVE-TAB",
+          "WAVE-TAB"
+        ],
+        "ctype_declares_sip": false,
+        "interpretation": "Astropy attaches the primary SIP coefficients to this alternate WAVE-TAB WCS despite its CTYPE lacking -SIP.",
+        "sip_coefficients_attached": true
+      },
+      "date_obs": "2025-04-24T18:01:05.843",
+      "detector": 1,
+      "filename": "level2_2025W17_4B_0001_1D1_spx_l2b-v27-2026-196.fits",
+      "finast": 0,
+      "image_hdu_index": 1,
+      "image_hdu_name": "IMAGE",
+      "manifest_sha256": "b2b78466058203dbabcf841b6223697e7e69b08b18a00882c764c6f8fd0acd59",
+      "mjd_obs": 60789.750762072,
+      "naxis": 2,
+      "naxis1": 2040,
+      "naxis2": 2040,
+      "naxis3": null,
+      "observation_id": "2025W17_4B_0001_1",
+      "processing_date": null,
+      "processing_version": null,
+      "relative_path": "SPHEREx Data Core/level2_2025W17_4B_0001_1D1_spx_l2b-v27-2026-196.fits",
+      "release_keywords": {},
+      "round_trip": {
+        "max_error_pixels": 4.464695183544078e-08,
+        "p95_error_pixels": 6.157342099986251e-09,
+        "sample_points": 25
+      },
+      "sha256": "b2b78466058203dbabcf841b6223697e7e69b08b18a00882c764c6f8fd0acd59",
+      "sha256_matches_manifest": true,
+      "shape_numpy_order": [
+        2040,
+        2040
+      ],
+      "sip": {
+        "active_in_primary_celestial_wcs": true,
+        "families": {
+          "A": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "AP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "B": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "BP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          }
+        }
+      },
+      "sip_vs_no_sip_diagnostic_arcsec": {
+        "is_accuracy_validation": false,
+        "maximum": 80.56508058036579,
+        "median": 18.50561587894372,
+        "p95": 57.25298671594033
+      },
+      "wcs": {
+        "axis_correlation_matrix": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ],
+        "cd": null,
+        "cdelt": [
+          1.0,
+          1.0
+        ],
+        "crpix": [
+          1020.5,
+          1020.5
+        ],
+        "crval": [
+          160.615237739,
+          30.6690774567
+        ],
+        "ctype": [
+          "RA---TAN-SIP",
+          "DEC--TAN-SIP"
+        ],
+        "cunit": [
+          "deg",
+          "deg"
+        ],
+        "equinox": null,
+        "latpole": 30.6690774567,
+        "lonpole": 180.0,
+        "pc": [
+          [
+            0.00159204547099,
+            -0.000685114964011
+          ],
+          [
+            -0.000626281472603,
+            -0.00156681541804
+          ]
+        ],
+        "radesys": "ICRS",
+        "wcsaxes": 2
+      }
+    },
+    {
+      "alternate_wcs_w": {
+        "ctype": [
+          "WAVE-TAB",
+          "WAVE-TAB"
+        ],
+        "ctype_declares_sip": false,
+        "interpretation": "Astropy attaches the primary SIP coefficients to this alternate WAVE-TAB WCS despite its CTYPE lacking -SIP.",
+        "sip_coefficients_attached": true
+      },
+      "date_obs": "2025-04-24T18:01:05.843",
+      "detector": 2,
+      "filename": "level2_2025W17_4B_0001_1D2_spx_l2b-v27-2026-196.fits",
+      "finast": 0,
+      "image_hdu_index": 1,
+      "image_hdu_name": "IMAGE",
+      "manifest_sha256": "3d51d09b5a8653b21ec0bbdaffa923545af8bdb5af4b4a2b42fe260b4f5a3b9a",
+      "mjd_obs": 60789.750762072,
+      "naxis": 2,
+      "naxis1": 2040,
+      "naxis2": 2040,
+      "naxis3": null,
+      "observation_id": "2025W17_4B_0001_1",
+      "processing_date": null,
+      "processing_version": null,
+      "relative_path": "SPHEREx Data Core/level2_2025W17_4B_0001_1D2_spx_l2b-v27-2026-196.fits",
+      "release_keywords": {},
+      "round_trip": {
+        "max_error_pixels": 6.435712950929239e-07,
+        "p95_error_pixels": 4.28262983762169e-07,
+        "sample_points": 25
+      },
+      "sha256": "3d51d09b5a8653b21ec0bbdaffa923545af8bdb5af4b4a2b42fe260b4f5a3b9a",
+      "sha256_matches_manifest": true,
+      "shape_numpy_order": [
+        2040,
+        2040
+      ],
+      "sip": {
+        "active_in_primary_celestial_wcs": true,
+        "families": {
+          "A": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "AP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "B": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "BP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          }
+        }
+      },
+      "sip_vs_no_sip_diagnostic_arcsec": {
+        "is_accuracy_validation": false,
+        "maximum": 69.25160560406775,
+        "median": 16.740179659657684,
+        "p95": 63.90771995493328
+      },
+      "wcs": {
+        "axis_correlation_matrix": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ],
+        "cd": null,
+        "cdelt": [
+          1.0,
+          1.0
+        ],
+        "crpix": [
+          1020.5,
+          1020.5
+        ],
+        "crval": [
+          164.706374438,
+          29.1395913468
+        ],
+        "ctype": [
+          "RA---TAN-SIP",
+          "DEC--TAN-SIP"
+        ],
+        "cunit": [
+          "deg",
+          "deg"
+        ],
+        "equinox": null,
+        "latpole": 29.1395913468,
+        "lonpole": 180.0,
+        "pc": [
+          [
+            0.00154390265747,
+            -0.000720554196162
+          ],
+          [
+            -0.000720963826708,
+            -0.0015461051281
+          ]
+        ],
+        "radesys": "ICRS",
+        "wcsaxes": 2
+      }
+    },
+    {
+      "alternate_wcs_w": {
+        "ctype": [
+          "WAVE-TAB",
+          "WAVE-TAB"
+        ],
+        "ctype_declares_sip": false,
+        "interpretation": "Astropy attaches the primary SIP coefficients to this alternate WAVE-TAB WCS despite its CTYPE lacking -SIP.",
+        "sip_coefficients_attached": true
+      },
+      "date_obs": "2025-04-28T13:00:15.755",
+      "detector": 1,
+      "filename": "level2_2025W18_1B_0001_1D1_spx_l2b-v27-2026-196.fits",
+      "finast": 0,
+      "image_hdu_index": 1,
+      "image_hdu_name": "IMAGE",
+      "manifest_sha256": "64113e82f4357303d9a595e384a51cd1e021e74c3ce81443d31ee74d42f8619a",
+      "mjd_obs": 60793.541849016,
+      "naxis": 2,
+      "naxis1": 2040,
+      "naxis2": 2040,
+      "naxis3": null,
+      "observation_id": "2025W18_1B_0001_1",
+      "processing_date": null,
+      "processing_version": null,
+      "relative_path": "Temporal Sky Engine/level2_2025W18_1B_0001_1D1_spx_l2b-v27-2026-196.fits",
+      "release_keywords": {},
+      "round_trip": {
+        "max_error_pixels": 1.7515960737351458e-06,
+        "p95_error_pixels": 3.328602204929982e-07,
+        "sample_points": 25
+      },
+      "sha256": "64113e82f4357303d9a595e384a51cd1e021e74c3ce81443d31ee74d42f8619a",
+      "sha256_matches_manifest": true,
+      "shape_numpy_order": [
+        2040,
+        2040
+      ],
+      "sip": {
+        "active_in_primary_celestial_wcs": true,
+        "families": {
+          "A": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "AP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "B": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "BP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          }
+        }
+      },
+      "sip_vs_no_sip_diagnostic_arcsec": {
+        "is_accuracy_validation": false,
+        "maximum": 77.7659178432244,
+        "median": 18.91019973710049,
+        "p95": 60.094899968214925
+      },
+      "wcs": {
+        "axis_correlation_matrix": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ],
+        "cd": null,
+        "cdelt": [
+          1.0,
+          1.0
+        ],
+        "crpix": [
+          1020.5,
+          1020.5
+        ],
+        "crval": [
+          276.261301609,
+          64.825738372
+        ],
+        "ctype": [
+          "RA---TAN-SIP",
+          "DEC--TAN-SIP"
+        ],
+        "cunit": [
+          "deg",
+          "deg"
+        ],
+        "equinox": null,
+        "latpole": 64.825738372,
+        "lonpole": 180.0,
+        "pc": [
+          [
+            -0.00114352806294,
+            -0.00122604962751
+          ],
+          [
+            -0.00127330302061,
+            0.0011903673342
+          ]
+        ],
+        "radesys": "ICRS",
+        "wcsaxes": 2
+      }
+    },
+    {
+      "alternate_wcs_w": {
+        "ctype": [
+          "WAVE-TAB",
+          "WAVE-TAB"
+        ],
+        "ctype_declares_sip": false,
+        "interpretation": "Astropy attaches the primary SIP coefficients to this alternate WAVE-TAB WCS despite its CTYPE lacking -SIP.",
+        "sip_coefficients_attached": true
+      },
+      "date_obs": "2025-07-21T00:02:39.204",
+      "detector": 1,
+      "filename": "level2_2025W30_1B_0001_1D1_spx_l2b-v27-2026-220.fits",
+      "finast": 0,
+      "image_hdu_index": 1,
+      "image_hdu_name": "IMAGE",
+      "manifest_sha256": "6b0061a1bea9539b4fe4ae288911c770d08b058ac900a068ddb28490192cc3a6",
+      "mjd_obs": 60877.001842639,
+      "naxis": 2,
+      "naxis1": 2040,
+      "naxis2": 2040,
+      "naxis3": null,
+      "observation_id": "2025W30_1B_0001_1",
+      "processing_date": null,
+      "processing_version": null,
+      "relative_path": "Temporal Sky Engine/level2_2025W30_1B_0001_1D1_spx_l2b-v27-2026-220.fits",
+      "release_keywords": {},
+      "round_trip": {
+        "max_error_pixels": 4.661851936591211e-08,
+        "p95_error_pixels": 6.605095535919154e-09,
+        "sample_points": 25
+      },
+      "sha256": "6b0061a1bea9539b4fe4ae288911c770d08b058ac900a068ddb28490192cc3a6",
+      "sha256_matches_manifest": true,
+      "shape_numpy_order": [
+        2040,
+        2040
+      ],
+      "sip": {
+        "active_in_primary_celestial_wcs": true,
+        "families": {
+          "A": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "AP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "B": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "BP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          }
+        }
+      },
+      "sip_vs_no_sip_diagnostic_arcsec": {
+        "is_accuracy_validation": false,
+        "maximum": 81.27655876289876,
+        "median": 19.182260747438637,
+        "p95": 56.40334237408034
+      },
+      "wcs": {
+        "axis_correlation_matrix": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ],
+        "cd": null,
+        "cdelt": [
+          1.0,
+          1.0
+        ],
+        "crpix": [
+          1020.5,
+          1020.5
+        ],
+        "crval": [
+          169.915791885,
+          -68.0527232771
+        ],
+        "ctype": [
+          "RA---TAN-SIP",
+          "DEC--TAN-SIP"
+        ],
+        "cunit": [
+          "deg",
+          "deg"
+        ],
+        "equinox": null,
+        "latpole": -68.0527232771,
+        "lonpole": 180.0,
+        "pc": [
+          [
+            0.000833527807321,
+            -0.00152287626927
+          ],
+          [
+            -0.00149357222211,
+            -0.000774907500161
+          ]
+        ],
+        "radesys": "ICRS",
+        "wcsaxes": 2
+      }
+    },
+    {
+      "alternate_wcs_w": {
+        "ctype": [
+          "WAVE-TAB",
+          "WAVE-TAB"
+        ],
+        "ctype_declares_sip": false,
+        "interpretation": "Astropy attaches the primary SIP coefficients to this alternate WAVE-TAB WCS despite its CTYPE lacking -SIP.",
+        "sip_coefficients_attached": true
+      },
+      "date_obs": "2025-10-13T00:09:07.399",
+      "detector": 1,
+      "filename": "level2_2025W42_1A_0001_1D1_spx_l2b-v27-2026-243.fits",
+      "finast": 0,
+      "image_hdu_index": 1,
+      "image_hdu_name": "IMAGE",
+      "manifest_sha256": "bfcd10b34d3222855ea9cd92b6e103e56b90949d92c399f8a5d36a608c0d970e",
+      "mjd_obs": 60961.006335637,
+      "naxis": 2,
+      "naxis1": 2040,
+      "naxis2": 2040,
+      "naxis3": null,
+      "observation_id": "2025W42_1A_0001_1",
+      "processing_date": null,
+      "processing_version": null,
+      "relative_path": "Temporal Sky Engine/level2_2025W42_1A_0001_1D1_spx_l2b-v27-2026-243.fits",
+      "release_keywords": {},
+      "round_trip": {
+        "max_error_pixels": 4.6282402378987825e-08,
+        "p95_error_pixels": 6.66743888998245e-09,
+        "sample_points": 25
+      },
+      "sha256": "bfcd10b34d3222855ea9cd92b6e103e56b90949d92c399f8a5d36a608c0d970e",
+      "sha256_matches_manifest": true,
+      "shape_numpy_order": [
+        2040,
+        2040
+      ],
+      "sip": {
+        "active_in_primary_celestial_wcs": true,
+        "families": {
+          "A": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "AP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "B": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          },
+          "BP": {
+            "coefficient_count": 10,
+            "finite_coefficient_count": 10,
+            "missing_terms_within_order": [],
+            "non_finite_keys": [],
+            "order": 3,
+            "terms_above_declared_order": []
+          }
+        }
+      },
+      "sip_vs_no_sip_diagnostic_arcsec": {
+        "is_accuracy_validation": false,
+        "maximum": 82.09246585532635,
+        "median": 17.85296973438805,
+        "p95": 57.206550806224364
+      },
+      "wcs": {
+        "axis_correlation_matrix": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ],
+        "cd": null,
+        "cdelt": [
+          1.0,
+          1.0
+        ],
+        "crpix": [
+          1020.5,
+          1020.5
+        ],
+        "crval": [
+          305.227644202,
+          6.84297036524
+        ],
+        "ctype": [
+          "RA---TAN-SIP",
+          "DEC--TAN-SIP"
+        ],
+        "cunit": [
+          "deg",
+          "deg"
+        ],
+        "equinox": null,
+        "latpole": 6.84297036524,
+        "lonpole": 180.0,
+        "pc": [
+          [
+            0.00163262757945,
+            0.000446794383243
+          ],
+          [
+            0.000509887463356,
+            -0.00164941122475
+          ]
+        ],
+        "radesys": "ICRS",
+        "wcsaxes": 2
+      }
+    }
+  ],
+  "products_found": 10,
+  "schema_version": 1,
+  "scientific_limitations": [
+    "Internal round-trip checks do not establish absolute astrometric accuracy.",
+    "The primary celestial MEF CTYPE declares TAN-SIP; the alternate WAVE-TAB WCS lacks a SIP suffix while Astropy detects inherited SIP coefficients.",
+    "No celestial WCS or FITS original is modified by this audit."
+  ],
+  "status": "PASS_WITH_LIMITATIONS"
+}

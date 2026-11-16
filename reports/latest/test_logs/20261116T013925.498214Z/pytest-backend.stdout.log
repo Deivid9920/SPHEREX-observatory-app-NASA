@@ -1,0 +1,39 @@
+.............................................                            [100%]
+============================== warnings summary ===============================
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\starlette\testclient.py:41
+  C:\Users\walke\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\starlette\testclient.py:41: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    [], typing.ContextManager[anyio.abc.BlockingPortal]
+
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:88
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:88
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:88
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:88
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:88
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:88
+  C:\Users\walke\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:88: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:92
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:92
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:92
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:92
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:92
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:92
+  C:\Users\walke\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:92: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+..\..\..\..\..\..\..\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_mathtext.py:45
+  C:\Users\walke\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\matplotlib\_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+tests/test_fits_data_api.py::test_fits_data_api_lists_metadata_previews_and_downloads_original
+tests/test_fits_data_api.py::test_spectral_profile_persists_quality_state_and_associated_external_maps
+tests/test_fits_data_api.py::test_calibration_diagnosis_and_registry_are_exposed
+tests/test_fits_data_api.py::test_irsa_api_failure_keeps_local_inventory_available
+tests/test_fits_data_api.py::test_fits_data_api_reports_not_found_invalid_hdu_and_stale_hash
+tests/test_fits_data_api.py::test_spectral_cube_preview_extraction_and_invalid_position
+  C:\Users\walke\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\httpx\_client.py:690: DeprecationWarning: The 'app' shortcut is now deprecated. Use the explicit style 'transport=WSGITransport(app=...)' instead.
+    warnings.warn(message, DeprecationWarning)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+45 passed, 20 warnings in 11.56s

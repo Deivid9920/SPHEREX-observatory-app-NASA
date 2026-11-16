@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "phase": "4.6",
+  "generated_at": "2026-11-15T19:45:11-06:00",
+  "overall_assessment": "READY_WITH_LIMITATIONS",
+  "assessment_summary": "Se demostraron el flujo local de inventario, previews, extracción y persistencia/replay, y la detección individual experimental. Temporal Vision y Discovery científico siguen bloqueados; no se demuestra astrometría absoluta, fotometría ni métricas de calidad del detector.",
+  "allowed_statuses": [
+    "PASS",
+    "PASS_WITH_LIMITATIONS",
+    "BLOCKED",
+    "NOT_TESTED",
+    "DEMO_ONLY"
+  ],
+  "validation": {
+    "central_runner": "scripts/validate_all.py",
+    "run_id": "20261116T014454.152783Z",
+    "started_at": "2026-11-16T01:44:54.153788+00:00",
+    "finished_at": "2026-11-16T01:45:11.521885+00:00",
+    "runner_status": "partial",
+    "backend_tests": {
+      "status": "PASS",
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "warnings": 20,
+      "evidence": "reports/history/20261116T014454.152783Z/test_logs/pytest-backend.stdout.log"
+    },
+    "frontend_typecheck": {
+      "status": "PASS",
+      "command": "pnpm.cmd run typecheck",
+      "exit_code": 0,
+      "evidence": "reports/history/20261116T014454.152783Z/test_logs/frontend-typecheck.stdout.log"
+    },
+    "frontend_build": {
+      "status": "PASS",
+      "command": "pnpm.cmd run build",
+      "exit_code": 0,
+      "evidence": "reports/history/20261116T014454.152783Z/test_logs/frontend-build.stdout.log",
+      "warning": "Node DEP0205: module.register() is deprecated."
+    },
+    "fits_integrity": {
+      "status": "PASS",
+      "checked_files": 10,
+      "manifest_entries": 10,
+      "mismatches": 0,
+      "manifest_sha256": "899881dfbca6ba5f035f30e346af93f4af457c8ec22d3db667ce6c860e64874c",
+      "evidence": "reports/latest/validation_results.json"
+    },
+    "automated_browser_e2e": {
+      "status": "NOT_TESTED",
+      "reason": "No automated browser E2E command is configured in the project manifests.",
+      "evidence": "reports/latest/validation_results.json"
+    },
+    "manual_browser_evidence": {
+      "status": "PASS_WITH_LIMITATIONS",
+      "source": "Backend/reports/FASE4_4_VALIDACION_CIENTIFICA.md",
+      "scope": "Inventario, previews FITS, extracción real, detección experimental, replay tras reinicio y estados bloqueados.",
+      "limitation": "Ejecución manual heredada, no es E2E automatizado repetible en este corte."
+    },
+    "pre_fix_orchestrator_defect": {
+      "status": "corrected",
+      "observed_run_id": "20261116T013925.498214Z",
+      "symptom": "frontend-typecheck/frontend-build bloqueados con WinError 2 al invocar pnpm desde subprocess en Windows.",
+      "cause": "La resolución encontraba pnpm.cmd, pero el runner ejecutaba el nombre pnpm.",
+      "correction": "En Windows el runner invoca pnpm.cmd; otros sistemas siguen usando pnpm.",
+      "verification": "La ejecución 20261116T014454.152783Z pasó ambos comandos desde el orquestador."
+    }
+  },
+  "modules": [
+    {
+      "name": "SPHEREx Data Core",
+      "status": "PASS_WITH_LIMITATIONS",
+      "capabilities": [
+        {
+          "name": "Inventario local e integridad SHA-256",
+          "status": "PASS",
+          "description": "Inventario de productos FITS y verificación de hashes respecto al manifiesto.",
+          "test_executed": "scripts/validate_all.py --category all; grupo fits-integrity.",
+          "data": "Backend/app/data/raw/spherex/ y Backend/app/data/processed/spherex/fits-manifest.json.",
+          "result": "10 archivos verificados, 10 entradas, 0 discrepancias.",
+          "evidence": "reports/history/20261116T014454.152783Z/validation_results.json",
+          "limitations": "El manifiesto es un inventario local y no demuestra procedencia de release por sí solo.",
+          "rationale": "Integridad reproduciblemente verificada en esta ejecución."
+        },
+        {
+          "name": "Lectura de HDUs, MEF, cubo y WCS",
+          "status": "PASS_WITH_LIMITATIONS",
+          "description": "Inspección de HDUs y metadatos de los nueve MEF y del cubo espectral.",
+          "test_executed": "Suite backend (45 tests) y auditorías FITS/WCS anteriores.",
+          "data": "9 MEF y Npix0_cube.fits; hashes incluidos en el manifiesto.",
+          "result": "MEF y cubo se clasifican y procesan con rutas diferenciadas; las pruebas WCS internas pasan.",
+          "evidence": "Backend/reports/FASE4_5_3_VALIDACION_ASTROMETRICA_WCS.md; Backend/reports/FASE4_4_VALIDACION_CIENTIFICA.md",
+          "limitations": "Consistencia de WCS no demuestra exactitud absoluta; todos permanecen ASTROMETRY_UNVALIDATED.",
+          "rationale": "Procesamiento y transformaciones internas demostradas, precisión celeste independiente pendiente."
+        },
+        {
+          "name": "Asociación de calibraciones y procedencia",
+          "status": "PASS_WITH_LIMITATIONS",
+          "description": "Asociación Spectral WCS D1/D2 y evaluación de productos/calibraciones.",
+          "test_executed": "Suite de calibración/backend y pruebas E2E documentadas.",
+          "data": "Spectral WCS D1/D2; CWAVE/CBAND contrastados con WCS-WAVE; productos Level 2 locales.",
+          "result": "Asociación por detector/grilla presente donde corresponde; perfil de calibración parcial.",
+          "evidence": "Backend/reports/FASE4_5_1_SPECTRAL_WCS_ADQUISICION_VALIDACION.md; Backend/reports/FASE4_4_VALIDACION_CIENTIFICA.md",
+          "limitations": "Release de productos locales y calibración fotométrica absoluta no verificados.",
+          "rationale": "No se reaplican correcciones upstream; asociar Spectral WCS no equivale a certificar toda la calibración."
+        }
+      ]
+    },
+    {
+      "name": "Temporal Sky Engine",
+      "status": "BLOCKED",
+      "capabilities": [
+        {
+          "name": "Comparación temporal de productos locales",
+          "status": "BLOCKED",
+          "description": "Alineación/compatibilidad, propagación de varianza y cálculo de diferencias entre dos épocas.",
+          "test_executed": "Inspección del inventario y ejecución E2E documentada en Fase 4.4; no se ejecutó una comparación.",
+          "data": "Inventario local de 9 MEF y 1 cubo.",
+          "result": "Cero productos elegibles para formar una pareja; la UI bloquea el análisis y no genera mapa de diferencias.",
+          "evidence": "Backend/reports/FASE4_4_VALIDACION_CIENTIFICA.md; Backend/app/services/fits_inventory.py",
+          "limitations": "Se requiere release/calibración, WCS/grilla, banda, PSF, fechas, máscaras y VARIANCE compatibles; no se iguala PSF ni remuestrea la varianza.",
+          "rationale": "Los requisitos de los datos actuales no se satisfacen; el cómputo científico permanece deshabilitado."
+        },
+        {
+          "name": "Consulta temporal remota",
+          "status": "BLOCKED",
+          "description": "Consulta IRSA y recuperación de observaciones para comparar épocas.",
+          "test_executed": "Consulta HTTP real durante la E2E de Fase 4.4.",
+          "data": "Consulta IRSA para una región del cielo.",
+          "result": "IRSA devolvió 502/timeout; no se produjo comparación.",
+          "evidence": "Backend/reports/FASE4_4_VALIDACION_CIENTIFICA.md",
+          "limitations": "Dependencia externa, sin fallback sintético.",
+          "rationale": "No hay observaciones remotas disponibles en la evidencia ejecutada."
+        },
+        {
+          "name": "Validación de candidatos transitorios",
+          "status": "NOT_TESTED",
+          "description": "Precisión/recall, falsos positivos, inyección/recuperación y control de covarianza.",
+          "test_executed": "No ejecutado; no hubo comparación elegible.",
+          "data": "Ninguna pareja temporal válida.",
+          "result": "Sin métricas científicas.",
+          "evidence": "Backend/reports/FASE4_6_SCIENTIFIC_LIMITATIONS.md",
+          "limitations": "No se debe afirmar detección validada de transitorios.",
+          "rationale": "Sin resultado temporal válido no se puede evaluar."
+        }
+      ]
+    },
+    {
+      "name": "Spectral Intelligence",
+      "status": "PASS_WITH_LIMITATIONS",
+      "capabilities": [
+        {
+          "name": "Extracción del cubo espectral",
+          "status": "PASS_WITH_LIMITATIONS",
+          "description": "Muestreo por píxel espacial de canales espectrales nativos.",
+          "test_executed": "Tests backend y ejecución E2E real previa con persistencia/replay.",
+          "data": "Npix0_cube.fits, 102 canales.",
+          "result": "En la ejecución documentada hubo 91/102 canales válidos; las longitudes tabuladas se comprobaron contra WCS 3D.",
+          "evidence": "Backend/reports/FASE4_4_VALIDACION_CIENTIFICA.md; Backend/app/services/fits_processor.py",
+          "limitations": "No hay VARIANCE; incertidumbres/significancia no disponibles. Es una muestra, no espectro integrado.",
+          "rationale": "Extracción y tabla de canales demostradas con datos reales, con incertidumbre ausente."
+        },
+        {
+          "name": "Muestra de MEF con Spectral WCS",
+          "status": "PASS_WITH_LIMITATIONS",
+          "description": "Muestra de píxel usando CWAVE/CBAND asociados o fallback WCS-W explícito.",
+          "test_executed": "Suite de calibración/FITS y E2E documentada.",
+          "data": "MEF D1/D2 con Spectral WCS oficial D1/D2.",
+          "result": "BUNIT, flags, unidad de mapa, geometría y procedencia se propagan a la respuesta.",
+          "evidence": "Backend/reports/FASE4_5_1_SPECTRAL_WCS_ADQUISICION_VALIDACION.md; Backend/reports/FASE4_4_VALIDACION_CIENTIFICA.md",
+          "limitations": "Un píxel; no valida fotometría absoluta ni homogeneidad de release.",
+          "rationale": "Muestra espectral real demostrada, pero no espectro integrado ni análisis plenamente calibrado."
+        },
+        {
+          "name": "Trazabilidad y replay espectral",
+          "status": "PASS_WITH_LIMITATIONS",
+          "description": "Guardar y recuperar análisis local con SHA-256 de entrada y resultado.",
+          "test_executed": "Pruebas backend actuales y replay E2E previo tras reiniciar.",
+          "data": "scientific_runs en SQLite local.",
+          "result": "GET/replay documentados con mismo digest de resultado.",
+          "evidence": "Backend/reports/FASE4_4_VALIDACION_CIENTIFICA.md; reports/history/20261116T014454.152783Z/",
+          "limitations": "PostgreSQL de despliegue no validado.",
+          "rationale": "Persistencia local comprobada; infraestructura de producción pendiente."
+        }
+      ]
+    },
+    {
+      "name": "AstroVision AI",
+      "status": "PASS_WITH_LIMITATIONS",
+      "capabilities": [
+        {
+          "name": "Detección individual sobre MEF real",
+          "status": "PASS_WITH_LIMITATIONS",
+          "description": "DAOStarFinder sobre IMAGE con enmascaramiento FLAGS y valores inválidos de VARIANCE.",
+          "test_executed": "Ejecución real y replay documentados en Fase 4.4; suite backend actual.",
+          "data": "MEF Level 2 real, detector D1.",
+          "result": "Detecciones experimentales persistidas; la ejecución previa registró 29.103 fuentes.",
+          "evidence": "Backend/reports/FASE4_4_VALIDACION_CIENTIFICA.md; Backend/app/api/v1/endpoints/data.py",
+          "limitations": "Dispersión global como umbral; VARIANCE no forma el modelo de ruido; no son fuentes confirmadas.",
+          "rationale": "Camino real ejecutado y rotulado como experimental."
+        },
+        {
+          "name": "Detección con ePSF/fotometría",
+          "status": "BLOCKED",
+          "description": "Ajuste de perfil ePSF y fotometría calibrada.",
+          "test_executed": "Inspección del servicio y perfil de calibración.",
+          "data": "EPSF embebida en MEF.",
+          "result": "El detector no consume ePSF y no hay ajuste PSF/fotometría validado.",
+          "evidence": "Backend/app/services/calibration_manager.py; Backend/app/api/v1/endpoints/data.py",
+          "limitations": "No estimar flux ni probabilidad de clasificación a partir de este detector.",
+          "rationale": "La capacidad necesaria está ausente, no solo pendiente de prueba."
+        },
+        {
+          "name": "Métricas de FPR/recall y centroides",
+          "status": "NOT_TESTED",
+          "description": "Validación de detección y estimación de centroides frente a verdad-terreno.",
+          "test_executed": "No ejecutado.",
+          "data": "No existe conjunto holdout o inyección/recuperación asociado a esta fase.",
+          "result": "Sin métricas de calidad ni incertidumbre de posición.",
+          "evidence": "Backend/reports/FASE4_6_SCIENTIFIC_LIMITATIONS.md",
+          "limitations": "No interpretar puntuación ni detección como probabilidad o descubrimiento.",
+          "rationale": "Falta truth set y procedimiento cuantitativo."
+        }
+      ]
+    },
+    {
+      "name": "Discovery Intelligence",
+      "status": "BLOCKED",
+      "capabilities": [
+        {
+          "name": "Catálogo científico conectado a detecciones locales",
+          "status": "BLOCKED",
+          "description": "Asociación de detecciones, evidencias, provenance y clasificación persistente.",
+          "test_executed": "Inspección de rutas/modelos; integración E2E previa.",
+          "data": "Modelo DetectionCandidateModel y ScientificDetectionModel.",
+          "result": "El pipeline temporal escribe candidatos; la detección local escribe scientific_detections. No hay enlace de promoción entre ellos.",
+          "evidence": "Backend/app/models/database_models.py; Backend/app/api/v1/endpoints/data.py; Backend/app/api/v1/endpoints/temporal.py",
+          "limitations": "Candidato requiere validación y provenance; endpoints por sí mismos no prueban descubrimientos.",
+          "rationale": "Falta el flujo de integración de evidencia y validación."
+        },
+        {
+          "name": "Visualizaciones de catálogo simulado",
+          "status": "DEMO_ONLY",
+          "description": "Candidatos y métricas ilustrativas del modo conceptual.",
+          "test_executed": "Inspección de la separación dataMode=demo y etiquetas visibles.",
+          "data": "Valores simulados definidos en Frontend/src/App.tsx.",
+          "result": "Se presentan como demo/ilustración, no como observaciones científicas.",
+          "evidence": "Frontend/src/App.tsx; Backend/reports/FASE4_4_VALIDACION_CIENTIFICA.md",
+          "limitations": "Nunca usar para inferencia o publicación.",
+          "rationale": "La interfaz explícitamente los identifica como ilustrativos."
+        }
+      ]
+    },
+    {
+      "name": "Cosmic Observatory",
+      "status": "PASS_WITH_LIMITATIONS",
+      "capabilities": [
+        {
+          "name": "Integración UI con inventario/preview/espectros/detección",
+          "status": "PASS_WITH_LIMITATIONS",
+          "description": "Cliente React consume respuestas backend y muestra estados de carga, error y bloqueo.",
+          "test_executed": "E2E manual de navegador previo; typecheck/build central actuales.",
+          "data": "FITS locales, respuestas HTTP y resultados persistidos.",
+          "result": "Inventario, previews, extracción y replay reales documentados.",
+          "evidence": "Backend/reports/FASE4_4_VALIDACION_CIENTIFICA.md; reports/history/20261116T014454.152783Z/",
+          "limitations": "La integración browser no es automatizada en el repositorio.",
+          "rationale": "Los flujos reales fueron demostrados manualmente y los assets compilan, pero no existe E2E repetible."
+        },
+        {
+          "name": "Modo conceptual aislado",
+          "status": "DEMO_ONLY",
+          "description": "Escenas, tracks, candidatos y canales ilustrativos para explorar interfaz.",
+          "test_executed": "Inspección de App.tsx y controles de dataMode.",
+          "data": "Datos ilustrativos locales, separados del modo Observatorio.",
+          "result": "Rotulados como simulados/demo.",
+          "evidence": "Frontend/src/App.tsx",
+          "limitations": "No presentarlos como resultado del backend o datos SPHEREx.",
+          "rationale": "La experiencia es explícitamente ilustrativa y está separada del modo Observatorio."
+        },
+        {
+          "name": "E2E automatizado",
+          "status": "NOT_TESTED",
+          "description": "Pruebas de navegador repetibles y automatizadas.",
+          "test_executed": "El runner registró browser-e2e como not_run.",
+          "data": "Frontend/package.json sin comando de E2E.",
+          "result": "No ejecutado ni aprobado.",
+          "evidence": "reports/latest/validation_results.json",
+          "limitations": "E2E manual de Fase 4.4 no reemplaza automatización.",
+          "rationale": "No existe runner/comando configurado."
+        }
+      ]
+    }
+  ],
+  "known_limitations": [
+    "ASTROMETRY_UNVALIDATED en todos los productos.",
+    "Temporal Vision permanece bloqueado y no validado científicamente.",
+    "No hay detección de descubrimientos confirmados, ni FPR/recall calibrados.",
+    "El cubo no tiene VARIANCE; no hay significancia estadística.",
+    "Release/procedencia fotométrica de productos locales no está plenamente verificada.",
+    "PostgreSQL y Redis no se validaron; SQLite y memoria son fallback locales.",
+    "E2E browser automatizado no está configurado."
+  ],
+  "evidence_paths": [
+    "reports/latest/validation_report.md",
+    "reports/latest/validation_results.json",
+    "reports/history/20261116T014454.152783Z/",
+    "Backend/reports/FASE4_4_VALIDACION_CIENTIFICA.md",
+    "Backend/reports/FASE4_5_4_VALIDACION_ASTROMETRICA_COMPLEMENTARIA.md",
+    "Backend/reports/FASE4_6_INTEGRATION_MATRIX.md",
+    "Backend/reports/FASE4_6_SCIENTIFIC_LIMITATIONS.md",
+    "Backend/reports/FASE4_6_ARCHITECTURE.mmd"
+  ]
+}

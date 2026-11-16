@@ -1,0 +1,146 @@
+{
+  "category": "all",
+  "duration_seconds": 13.5,
+  "finished_at": "2026-11-16T01:39:39.003233+00:00",
+  "notes": [
+    "No retry is performed; an initial failure remains visible.",
+    "The FITS integrity check reads and hashes originals but never writes to them.",
+    "A missing browser E2E command is recorded as not run, not passed."
+  ],
+  "paths": {
+    "evidence": "reports\\latest\\evidence\\20261116T013925.498214Z",
+    "history": "reports\\history\\20261116T013925.498214Z",
+    "json": "reports\\latest\\validation_results.json",
+    "logs": "reports\\latest\\test_logs\\20261116T013925.498214Z"
+  },
+  "results": [
+    {
+      "command": [
+        "C:\\Users\\walke\\.copilot\\session-state\\6678e58f-0f41-4a6a-8d18-0e0257bfe143\\files\\venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "cwd": "C:\\Users\\walke\\Desktop\\TECNO\\SPHEREX\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory\\Backend",
+      "duration_seconds": 12.718,
+      "exit_code": 0,
+      "failure_kind": null,
+      "name": "pytest-backend",
+      "pytest_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 45,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "started_at": "2026-11-16T01:39:25.500228+00:00",
+      "status": "passed",
+      "stderr_log": "C:\\Users\\walke\\Desktop\\TECNO\\SPHEREX\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory\\reports\\latest\\test_logs\\20261116T013925.498214Z\\pytest-backend.stderr.log",
+      "stdout_log": "C:\\Users\\walke\\Desktop\\TECNO\\SPHEREX\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory\\reports\\latest\\test_logs\\20261116T013925.498214Z\\pytest-backend.stdout.log",
+      "warnings": [
+        "============================== warnings summary ===============================",
+        "C:\\Users\\walke\\.copilot\\session-state\\6678e58f-0f41-4a6a-8d18-0e0257bfe143\\files\\venv\\Lib\\site-packages\\starlette\\testclient.py:41: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.",
+        "C:\\Users\\walke\\.copilot\\session-state\\6678e58f-0f41-4a6a-8d18-0e0257bfe143\\files\\venv\\Lib\\site-packages\\matplotlib\\_fontconfig_pattern.py:88: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'",
+        "C:\\Users\\walke\\.copilot\\session-state\\6678e58f-0f41-4a6a-8d18-0e0257bfe143\\files\\venv\\Lib\\site-packages\\matplotlib\\_fontconfig_pattern.py:92: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'",
+        "C:\\Users\\walke\\.copilot\\session-state\\6678e58f-0f41-4a6a-8d18-0e0257bfe143\\files\\venv\\Lib\\site-packages\\matplotlib\\_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'",
+        "C:\\Users\\walke\\.copilot\\session-state\\6678e58f-0f41-4a6a-8d18-0e0257bfe143\\files\\venv\\Lib\\site-packages\\httpx\\_client.py:690: DeprecationWarning: The 'app' shortcut is now deprecated. Use the explicit style 'transport=WSGITransport(app=...)' instead.",
+        "warnings.warn(message, DeprecationWarning)",
+        "-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html",
+        "45 passed, 20 warnings in 11.56s"
+      ]
+    },
+    {
+      "command": [
+        "pnpm",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "C:\\Users\\walke\\Desktop\\TECNO\\SPHEREX\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory\\Frontend",
+      "duration_seconds": 0.0,
+      "exit_code": null,
+      "failure_kind": "infrastructure",
+      "name": "frontend-typecheck",
+      "pytest_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "started_at": "2026-11-16T01:39:38.233182+00:00",
+      "status": "blocked",
+      "stderr_log": "C:\\Users\\walke\\Desktop\\TECNO\\SPHEREX\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory\\reports\\latest\\test_logs\\20261116T013925.498214Z\\frontend-typecheck.stderr.log",
+      "stdout_log": "C:\\Users\\walke\\Desktop\\TECNO\\SPHEREX\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory\\reports\\latest\\test_logs\\20261116T013925.498214Z\\frontend-typecheck.stdout.log",
+      "warnings": []
+    },
+    {
+      "command": [
+        "pnpm",
+        "run",
+        "build"
+      ],
+      "cwd": "C:\\Users\\walke\\Desktop\\TECNO\\SPHEREX\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory\\Frontend",
+      "duration_seconds": 0.0,
+      "exit_code": null,
+      "failure_kind": "infrastructure",
+      "name": "frontend-build",
+      "pytest_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "started_at": "2026-11-16T01:39:38.236235+00:00",
+      "status": "blocked",
+      "stderr_log": "C:\\Users\\walke\\Desktop\\TECNO\\SPHEREX\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory\\reports\\latest\\test_logs\\20261116T013925.498214Z\\frontend-build.stderr.log",
+      "stdout_log": "C:\\Users\\walke\\Desktop\\TECNO\\SPHEREX\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory-corregido\\SPHEREx-temporal-observatory\\reports\\latest\\test_logs\\20261116T013925.498214Z\\frontend-build.stdout.log",
+      "warnings": []
+    },
+    {
+      "checked_files": 10,
+      "duration_seconds": 0.766,
+      "failure_kind": null,
+      "manifest": "Backend\\app\\data\\processed\\spherex\\fits-manifest.json",
+      "manifest_entries": 10,
+      "manifest_sha256": "899881dfbca6ba5f035f30e346af93f4af457c8ec22d3db667ce6c860e64874c",
+      "mismatches": [],
+      "name": "fits-integrity",
+      "status": "passed"
+    },
+    {
+      "failure_kind": null,
+      "name": "browser-e2e",
+      "pytest_counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "reason": "No automated browser E2E command is configured in the project manifests.",
+      "status": "not_run"
+    }
+  ],
+  "run_id": "20261116T013925.498214Z",
+  "schema_version": 1,
+  "started_at": "2026-11-16T01:39:25.499222+00:00",
+  "status": "blocked",
+  "totals": {
+    "blocked_groups": 2,
+    "errors": 0,
+    "failed": 0,
+    "failed_groups": 0,
+    "not_run_groups": 1,
+    "passed": 45,
+    "skipped": 0,
+    "tests": 45,
+    "unstable": 0,
+    "xfailed": 0,
+    "xpassed": 0
+  }
+}

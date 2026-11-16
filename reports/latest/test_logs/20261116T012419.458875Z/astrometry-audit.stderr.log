@@ -1,0 +1,2 @@
+C:\Users\walke\.copilot\session-state\6678e58f-0f41-4a6a-8d18-0e0257bfe143\files\venv\Lib\site-packages\erfa\core.py:133: ErfaWarning: ERFA function "pmsafe" yielded 78 of "distance overridden (Note 6)"
+  warn(f'ERFA function "{func_name}" yielded {wmsg}', ErfaWarning)
