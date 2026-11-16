@@ -1,19 +1,19 @@
 # SPHEREx Temporal Observatory
 
-Plataforma de exploración astronómica con un frontend React/Vite y un backend FastAPI. El proyecto se organiza en dos aplicaciones independientes para facilitar su instalación, ejecución y despliegue.
+Astronomical exploration platform featuring a React/Vite frontend and a FastAPI backend. The project is organized into two independent applications to streamline installation, execution, and deployment.
 
-## 1. Estructura del proyecto
+## 1. Project Structure
 
 ```text
 SPHEREx-temporal-observatory/
 ├── Frontend/
-│   ├── public/                 # Recursos estáticos
+│   ├── public/                 # Static assets
 │   ├── src/
-│   │   ├── App.tsx              # Interfaz principal
-│   │   ├── fits.ts              # Lectura/decodificación FITS en frontend
-│   │   ├── index.css            # Estilos globales
-│   │   └── main.tsx             # Punto de entrada React
-│   ├── .figma/                  # Configuración utilizada por Figma Make
+│   │   ├── App.tsx              # Main interface
+│   │   ├── fits.ts              # Frontend FITS reading/decoding
+│   │   ├── index.css            # Global styles
+│   │   └── main.tsx             # React entry point
+│   ├── .figma/                  # Configuration used by Figma Make
 │   ├── index.html
 │   ├── package.json
 │   ├── pnpm-lock.yaml
@@ -21,16 +21,16 @@ SPHEREx-temporal-observatory/
 │   └── vite.config.ts
 ├── Backend/
 │   ├── app/
-│   │   ├── api/v1/endpoints/    # Rutas HTTP
-│   │   ├── core/                # Configuración, caché y base de datos
-│   │   ├── models/              # Modelos SQLAlchemy
-│   │   ├── schemas/             # Esquemas Pydantic
-│   │   ├── services/            # IRSA, FITS, renderizado y análisis
-│   │   └── main.py              # Aplicación FastAPI y ciclo de vida
+│   │   ├── api/v1/endpoints/    # HTTP routes
+│   │   ├── core/                # Configuration, cache, and database
+│   │   ├── models/              # SQLAlchemy models
+│   │   ├── schemas/             # Pydantic schemas
+│   │   ├── services/            # IRSA, FITS, rendering, and analysis
+│   │   └── main.py              # FastAPI application and lifecycle
 │   ├── data/
-│   │   ├── raw/spherex/        # FITS originales (excluidos de Git)
-│   │   └── processed/spherex/  # Manifiesto y productos derivados
-│   ├── tests/                  # Pruebas sobre FITS sintéticos temporales
+│   │   ├── raw/spherex/        # Raw FITS files (excluded from Git)
+│   │   └── processed/spherex/  # Manifest and derived products
+│   ├── tests/                  # Tests on synthetic temporal FITS
 │   ├── fits-consumers.example.json
 │   ├── .env.example
 │   └── requirements.txt
@@ -38,25 +38,25 @@ SPHEREx-temporal-observatory/
 └── README.md
 ```
 
-Se eliminaron del paquete de entrega las carpetas `node_modules`, bytecode de Python, cachés y archivos de instalación duplicados. Se conservaron los archivos fuente, recursos públicos, configuración de Figma Make y el lockfile de pnpm.
+The `node_modules` directories, Python bytecode, caches, and duplicate installation files were removed from the delivery package. Source files, public assets, Figma Make configuration, and the pnpm lockfile were preserved.
 
-## 2. Requisitos previos
+## 2. Prerequisites
 
-- **Node.js:** 22.12.0 o posterior.
-- **pnpm:** 10.34.3 (declarado en `Frontend/package.json`).
-- **Python:** 3.11 recomendado.
-- **PostgreSQL:** opcional. Si no está disponible, el backend intenta utilizar SQLite local.
-- **Redis:** opcional. Si no está disponible, la caché utiliza memoria local.
+- **Node.js:** 22.12.0 or later.
+- **pnpm:** 10.34.3 (specified in `Frontend/package.json`).
+- **Python:** 3.11 recommended.
+- **PostgreSQL:** optional. If unavailable, the backend falls back to local SQLite.
+- **Redis:** optional. If unavailable, caching falls back to local in-memory storage.
 
-Las versiones de Python están fijadas en `Backend/requirements.txt`. Se recomienda Python 3.11 para mantener compatibilidad con las versiones fijadas de NumPy, SciPy y Astropy.
+Python package versions are pinned in `Backend/requirements.txt`. Python 3.11 is recommended to maintain compatibility with the pinned versions of NumPy, SciPy, and Astropy.
 
-## 3. Orden de ejecución
+## 3. Execution Order
 
-El backend y el frontend se ejecutan en terminales separadas.
+The backend and frontend run in separate terminals.
 
-### Paso 1 — Instalar y arrancar el backend
+### Step 1 — Install and Start the Backend
 
-Desde la carpeta raíz del proyecto:
+From the project root directory:
 
 **Windows (PowerShell):**
 
@@ -82,29 +82,29 @@ cp .env.example .env
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-La API queda disponible en:
+The API will be available at:
 
 - API: `http://localhost:8000`
-- Documentación interactiva: `http://localhost:8000/docs`
-- Estado: `http://localhost:8000/health`
+- Interactive documentation: `http://localhost:8000/docs`
+- Health status: `http://localhost:8000/health`
 
-El backend crea automáticamente los directorios `data/raw` y `data/processed`. No es necesario crearlos manualmente.
+The backend automatically creates the `data/raw` and `data/processed` directories. You do not need to create them manually.
 
-**Importante:** ejecutar Uvicorn desde `Backend/` mantiene consistentes las rutas relativas de `.env`, `data/raw` y `data/processed`.
+**Important:** Running Uvicorn from `Backend/` keeps relative paths for `.env`, `data/raw`, and `data/processed` consistent.
 
-#### Añadir archivos FITS locales
+#### Adding Local FITS Files
 
-Coloca los originales una sola vez en `Backend/data/raw/spherex/`, en subcarpetas si lo necesitas. Copia `Backend/fits-consumers.example.json` como `Backend/fits-consumers.json`: cada ruta es relativa a `data/raw/spherex` y puede enumerar varios consumidores. Desde `Backend/`, después de copiar FITS o cambiar las asignaciones, actualiza el manifiesto con:
+Place the raw FITS files once inside `Backend/data/raw/spherex/`, organizing them into subdirectories if needed. Copy `Backend/fits-consumers.example.json` to `Backend/fits-consumers.json`: each path is relative to `data/raw/spherex` and can list multiple consumers. From `Backend/`, after copying FITS files or updating consumer assignments, rebuild the manifest with:
 
 ```powershell
 python -m app.scripts.build_fits_inventory
 ```
 
-El inventario conserva un único registro por archivo físico, su SHA-256, metadatos de HDU/WCS/checksum y sus consumidores. Los originales están excluidos de Git; el backend puede entregar sus bytes originales por HTTP. Las previsualizaciones PNG son productos derivados y no sustituyen los FITS.
+The inventory maintains a single record per physical file, including its SHA-256 hash, HDU/WCS/checksum metadata, and assigned consumers. Raw files are excluded from Git; the backend can serve their original bytes over HTTP. PNG previews are derived products and do not replace the raw FITS files.
 
-### Paso 2 — Instalar y arrancar el frontend
+### Step 2 — Install and Start the Frontend
 
-Abre una segunda terminal desde la raíz del proyecto:
+Open a second terminal from the project root directory:
 
 ```bash
 cd Frontend
@@ -112,16 +112,16 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Vite utiliza el puerto **8443** según la configuración actual del proyecto. Abre:
+Vite uses port **8443** according to the current project configuration. Open:
 
 `http://localhost:8443`
 
-El backend ya permite solicitudes CORS desde ese origen local.
-Configura `Frontend/.env` a partir de `.env.example` antes de iniciar Vite; en local puede usarse el valor por defecto.
+The backend is already configured to allow CORS requests from this local origin.
+Configure `Frontend/.env` from `.env.example` before starting Vite; the default value works for local development.
 
-### Paso 3 — Compilar para producción
+### Step 3 — Build for Production
 
-Desde `Frontend/`:
+From `Frontend/`:
 
 ```bash
 pnpm typecheck
@@ -129,81 +129,81 @@ pnpm build
 pnpm preview
 ```
 
-Los archivos compilados se generan en `Frontend/dist/`.
+The compiled build artifacts are generated in `Frontend/dist/`.
 
-## 4. Variables de entorno del backend
+## 4. Backend Environment Variables
 
-Copia `Backend/.env.example` como `Backend/.env`. Las variables de PostgreSQL y Redis son opcionales.
+Copy `Backend/.env.example` to `Backend/.env`. PostgreSQL and Redis variables are optional.
 
-- `DATABASE_URL`: conexión PostgreSQL completa.
-- `POSTGRES_SERVER`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`, `POSTGRES_PORT`: alternativa por campos.
-- `REDIS_URL`: URL de Redis.
-- `REDIS_HOST`, `REDIS_PORT`, `REDIS_DB`: alternativa por campos.
-- `PUBLIC_BASE_URL`: URL pública del backend.
-- `CORS_ORIGINS`: orígenes frontend exactos, separados por comas; el valor de ejemplo permite `http://localhost:8443`.
-- `DATA_RAW_DIR`: carpeta de archivos FITS descargados.
-- `DATA_PROCESSED_DIR`: carpeta de imágenes procesadas.
-- `SPHEREX_RAW_DIR`, `SPHEREX_PROCESSED_DIR`, `SPHEREX_MANIFEST_PATH`, `SPHEREX_CONSUMERS_PATH`: rutas del inventario y los datos SPHEREx locales.
+- `DATABASE_URL`: full PostgreSQL connection string.
+- `POSTGRES_SERVER`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`, `POSTGRES_PORT`: individual connection fields alternative.
+- `REDIS_URL`: Redis connection URL.
+- `REDIS_HOST`, `REDIS_PORT`, `REDIS_DB`: individual connection fields alternative.
+- `PUBLIC_BASE_URL`: public base URL of the backend.
+- `CORS_ORIGINS`: exact allowed frontend origins, comma-separated; the example value permits `http://localhost:8443`.
+- `DATA_RAW_DIR`: directory for downloaded FITS files.
+- `DATA_PROCESSED_DIR`: directory for processed images.
+- `SPHEREX_RAW_DIR`, `SPHEREX_PROCESSED_DIR`, `SPHEREX_MANIFEST_PATH`, `SPHEREX_CONSUMERS_PATH`: paths for local SPHEREx data and inventory files.
 
-No agregues credenciales reales al repositorio.
+Do not commit real credentials to the repository.
 
-## 5. Flujo de ejecución del backend
+## 5. Backend Execution Flow
 
-1. `app.main` carga la configuración y prepara las carpetas de datos.
-2. FastAPI inicia su ciclo de vida: registra los modelos, crea las tablas, prepara índices y conecta Redis (o activa el fallback en memoria).
-3. `app.api.v1.router` registra los grupos de endpoints.
-4. Los endpoints delegan las operaciones en los servicios de IRSA, FITS, análisis temporal y renderizado.
-5. Los resultados gráficos procesados se guardan en `data/processed` y se sirven mediante `/static`.
+1. `app.main` loads the configuration and initializes data directories.
+2. FastAPI runs its lifespan startup: registers models, creates database tables, sets up indexes, and connects to Redis (or enables the in-memory fallback).
+3. `app.api.v1.router` registers the endpoint groups.
+4. Endpoints delegate operations to the IRSA, FITS, temporal analysis, and rendering services.
+5. Processed visual outputs are saved in `data/processed` and served via `/static`.
 
-## 6. Comprobaciones realizadas y alcance
+## 6. Completed Checks and Scope
 
-- Se reorganizaron las carpetas para evitar rutas anidadas de exportación.
-- Se unificó la instalación del backend en un único `requirements.txt` UTF-8.
-- Se conservaron las dependencias del frontend y su `pnpm-lock.yaml`.
-- Se añadieron marcadores `__init__.py` para hacer explícitos los paquetes Python.
-- Se añadió el puerto local 8443 a los orígenes CORS, ya que es el puerto configurado en Vite.
-- Se actualizaron llamadas de Matplotlib/Pillow para evitar APIs obsoletas.
-- Se añadieron instrucciones de instalación, ejecución y compilación.
+- Reorganized directory structure to avoid nested export paths.
+- Consolidated backend dependencies into a single UTF-8 `requirements.txt` file.
+- Preserved frontend dependencies and its `pnpm-lock.yaml`.
+- Added `__init__.py` markers to make Python packages explicit.
+- Added local port `8443` to allowed CORS origins, matching the configured Vite port.
+- Updated Matplotlib/Pillow calls to replace deprecated APIs.
+- Added installation, execution, and build instructions.
 
-**Datos de desarrollo:** `app/services/irsa_service.py` contiene una ruta explícitamente sintética de generación FITS para desarrollo. No se sustituyó ni se presenta como descarga real de NASA/IRSA.
+**Development Data:** `app/services/irsa_service.py` contains an explicitly synthetic FITS generation path for development purposes. It has not been substituted for, nor is it presented as, real NASA/IRSA downloads.
 
-## 7. Integración Frontend–Backend
+## 7. Frontend–Backend Integration
 
-El cliente HTTP centralizado en `Frontend/src/api/` usa Fetch nativo, tipa y valida las formas de respuesta esperadas, aplica límites de espera y unifica errores HTTP, conexión y JSON. Las solicitudes de vistas se pueden cancelar al cambiar de contexto; lecturas idénticas simultáneas sin cancelación comparten la misma promesa.
+The centralized HTTP client in `Frontend/src/api/` uses native Fetch, types and validates expected response shapes, enforces request timeouts, and unifies HTTP, network, and JSON parsing errors. View requests can be aborted upon context changes; identical concurrent read requests without cancellation share the same in-flight promise.
 
-Configura `Frontend/.env` a partir de `Frontend/.env.example`:
+Configure `Frontend/.env` from `Frontend/.env.example`:
 
 ```env
 VITE_API_URL=http://localhost:8000
 ```
 
-`VITE_API_URL` es pública por diseño. Nunca pongas credenciales ni secretos en variables `VITE_`. En despliegue configura la URL pública del API para Vite y agrega el origen exacto del sitio a `CORS_ORIGINS` en `Backend/.env`; separa varios orígenes mediante comas. No se permiten comodines ni regex para previews.
+`VITE_API_URL` is public by design. Never store credentials or secrets in `VITE_` environment variables. In production deployments, set the public API URL for Vite and add the exact frontend origin to `CORS_ORIGINS` in `Backend/.env`; separate multiple origins with commas. Wildcards and regular expressions are not allowed for preview deployments.
 
-### Matriz de módulos y rutas existentes
+### Module and Endpoint Matrix
 
-| Módulo | Endpoint(s) consumidos | Correspondencia |
+| Module | Consumed Endpoint(s) | Mapping |
 |---|---|---|
-| Sky Explorer | `GET /api/v1/sky/regions/featured`; `GET /api/v1/sky/observations?ra=&dec=&fov_deg=` | Regiones precargadas y metadatos de observaciones consultadas en IRSA. |
-| Temporal Vision | `POST /api/v1/jobs/temporal`; `GET /api/v1/jobs/{job_id}` | Ejecuta el pipeline WCS/FITS/diferencias Z y presenta imágenes PNG derivadas, candidatos y métricas. |
-| Spectral Analysis | `GET /api/v1/spectral/profile?ra=&dec=&fov_deg=` | Presenta las muestras extraídas, longitudes de onda, flujo, incertidumbre y observación. |
-| Object Detection | `POST /api/v1/jobs/temporal`; `GET /api/v1/jobs/{job_id}` | El pipeline temporal incluye detección; no existe un endpoint independiente de detección. |
-| Discovery Catalog | `GET /api/v1/detection/discoveries?limit=`; `GET /api/v1/detection/discoveries/{candidate_code}` | Lista y consulta evidencia de candidatos persistidos por el pipeline. |
+| Sky Explorer | `GET /api/v1/sky/regions/featured`; `GET /api/v1/sky/observations?ra=&dec=&fov_deg=` | Preloaded sky regions and observation metadata queried from IRSA. |
+| Temporal Vision | `POST /api/v1/jobs/temporal`; `GET /api/v1/jobs/{job_id}` | Executes the WCS/FITS/Z-difference pipeline and presents derived PNG images, candidates, and metrics. |
+| Spectral Analysis | `GET /api/v1/spectral/profile?ra=&dec=&fov_deg=` | Displays extracted spectral samples, wavelengths, flux, uncertainty, and observation metadata. |
+| Object Detection | `POST /api/v1/jobs/temporal`; `GET /api/v1/jobs/{job_id}` | Detection is integrated into the temporal pipeline; there is no standalone detection endpoint. |
+| Discovery Catalog | `GET /api/v1/detection/discoveries?limit=`; `GET /api/v1/detection/discoveries/{candidate_code}` | Lists and inspects evidence for candidates persisted by the pipeline. |
 
-`GET /health` existe, pero el estado de conexión de la interfaz se comprueba llamando a un servicio real (`/sky/regions/featured`). No existe endpoint de transferencia FITS al navegador: el backend descarga y procesa los MEF FITS y entrega PNGs renderizados como vistas previas. Los FITS originales no se convierten indiscriminadamente a JSON.
+`GET /health` exists, but the UI connection status is verified by querying a live service endpoint (`/sky/regions/featured`). There is no endpoint for streaming raw FITS files to the browser: the backend downloads and processes MEF FITS files and delivers rendered PNGs as previews. Raw FITS files are not indiscriminately converted to JSON.
 
-Las pantallas/controladores previos se conservan y mantienen rotulación ilustrativa. Los paneles identificados como **Datos del Backend** muestran solo respuestas reales; el score C del pipeline es experimental, no una probabilidad calibrada. El Backend no ofrece validación persistente de candidatos, imágenes calibradas para Sky Explorer ni un endpoint independiente de detección.
+Legacy screens/controllers are retained with illustrative labeling. Panels labeled **Datos del Backend** (*Backend Data*) display real backend responses only; the pipeline's C-score is experimental and does not represent a calibrated probability. The backend does not provide persistent candidate validation, calibrated science images for Sky Explorer, or a standalone detection endpoint.
 
-El inventario detallado de métodos, parámetros, respuesta, errores, servicio interno y estado por módulo está en [Frontend/docs/API-INTEGRATION.md](./Frontend/docs/API-INTEGRATION.md).
+The detailed inventory of methods, parameters, response schemas, error handling, internal services, and status per module is available in [Frontend/docs/API-INTEGRATION.md](./Frontend/docs/API-INTEGRATION.md).
 
-### Ejecutar y verificar
+### Run and Verify
 
-1. Inicia el Backend desde `Backend/` en `http://localhost:8000` según el paso 1.
-2. Crea `Frontend/.env`, instala con `pnpm install --frozen-lockfile` y ejecuta `pnpm typecheck`, `pnpm build` y `pnpm dev` desde `Frontend/`.
-3. Abre `http://localhost:8443`. En Sky Explorer consulta las observaciones para las coordenadas actuales o selecciona una región del Backend. Temporal Vision necesita dos observaciones consultables; Spectral Analysis acepta FOV de `0.01°` a `0.2°`.
-4. Comprueba **Backend connected** y los estados de carga/error/vacío en cada módulo. El acceso a NASA/IPAC es externo y se requiere para disponer de observaciones y completar el procesamiento.
+1. Start the Backend from `Backend/` on `http://localhost:8000` following Step 1.
+2. Create `Frontend/.env`, install dependencies with `pnpm install --frozen-lockfile`, and run `pnpm typecheck`, `pnpm build`, and `pnpm dev` from `Frontend/`.
+3. Open `http://localhost:8443`. In Sky Explorer, query observations for the current coordinates or select a backend-provided region. Temporal Vision requires two queryable observations; Spectral Analysis accepts a FOV between `0.01°` and `0.2°`.
+4. Verify **Backend connected** status as well as loading, error, and empty states across each module. External access to NASA/IPAC is required to fetch observations and complete processing.
 
-Los jobs se guardan en memoria y se pierden al reiniciar el Backend. Los candidatos dependen de la base de datos configurada y no representan descubrimientos validados.
+Jobs are stored in memory and are lost when the Backend restarts. Persisted candidates depend on the configured database and do not represent scientifically validated discoveries.
 
-La comparación local exige productos compatibles DR1/QR3, una misma banda, unidades, calibración y PSF compatible y una grilla WCS idéntica. No remuestrea la imagen ni la varianza; genera un recorte de 150 píxeles. En esa operación local no se aplican los parámetros `fov_deg` ni `band_index`. La extracción espectral local devuelve una muestra sin interpolación y mantiene el `BUNIT` original; sólo los endpoints espectrales actuales, cuyo contrato expresa MJy/sr, convierten a esa unidad después de validar la unidad de varianza.
+Local comparison requires compatible DR1/QR3 products, matching band, units, calibration, and compatible PSF, as well as an identical WCS grid. It does not resample the image or variance arrays; instead, it generates a 150-pixel cutout. The `fov_deg` and `band_index` parameters are not applied in this local operation. Local spectral extraction returns a sample without interpolation and preserves the original `BUNIT`; only current spectral endpoints—whose contract specifies `MJy/sr`—convert to that unit after validating the variance unit.
 
-Para ejecutar pruebas FITS sintéticas y aisladas, desde `Backend/` instala `pip install -r requirements-test.txt` con Python 3.11 y ejecuta `python -m pytest`. No hay actualmente archivos FITS reales en el workspace; esas pruebas no validan productos de vuelo ni una release científica.
+To run isolated synthetic FITS tests, install `pip install -r requirements-test.txt` with Python 3.11 from `Backend/` and run `python -m pytest`. There are currently no real FITS files in the workspace; these tests do not validate flight products or a scientific release.
